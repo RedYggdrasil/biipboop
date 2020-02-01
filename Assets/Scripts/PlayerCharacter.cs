@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : Character
 {
@@ -35,4 +36,8 @@ public class PlayerCharacter : Character
         base.Update();
     }
 
+    public void AddItem()
+    {
+        SceneManager.LoadScene("DevSceneTim2");
+    }
 }
