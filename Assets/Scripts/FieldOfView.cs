@@ -51,9 +51,8 @@ public class FieldOfView : MonoBehaviour
 
     void FindVisibleTargets() 
     {
-        foeCharacter.visibleTargets.Clear();
         Collider[] targetsInViewRad = Physics.OverlapSphere(transform.position, viewRad, targetMask);
-        
+        List<Transform> visible = new List<Transform>();
         for (int i=0; i < targetsInViewRad.Length; i++) 
         {
             Transform target = targetsInViewRad[i].transform;
@@ -62,10 +61,11 @@ public class FieldOfView : MonoBehaviour
                 float distToTarget = Vector3.Distance(transform.position, target.position);
                 if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
-                    foeCharacter.visibleTargets.Add(target);
+                    visible.Add(target);
                 }
             }
         }
+        foeCharacter.OnUpdateSawTransform(visible);
      }
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal) 
