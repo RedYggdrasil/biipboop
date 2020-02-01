@@ -10,6 +10,7 @@ public class FoeCharacter : Character
     public List<Activity> orderedPossibleActivities;
     public override void OnActivityFinished(Activity activity)
     {
+        base.OnActivityFinished(activity);
         if (randomActivities)
         {
             SetNextRandomActivity(activity);
@@ -45,6 +46,7 @@ public class FoeCharacter : Character
         int activityToDo = _orderedActivityIndex;
         _orderedActivityIndex = ((_orderedActivityIndex + 1) % orderedPossibleActivities.Count);
 
+        Debug.Log(this.gameObject.name + " finished " + ((last != null)?last.gameObject.name:"null") + " new index : " + activityToDo + " now doing : " + orderedPossibleActivities[activityToDo] + "next index : " + _orderedActivityIndex);
         SetCurrentActivity(orderedPossibleActivities[activityToDo]);
     }
 
