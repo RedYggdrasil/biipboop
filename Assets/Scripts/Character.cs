@@ -53,6 +53,11 @@ public abstract class Character : MonoBehaviour
                     _currentActivity.OnReached(this);
                 }
             }
+            else
+            {
+                //We arrived
+                _character.Move(Vector3.zero, false, false);
+            }
         }
         else
         {
@@ -87,6 +92,7 @@ public abstract class Character : MonoBehaviour
         if (_currentActivity == activity)
         {
             _currentActivity = null;
+            activityReached = false;
         }
     }
 }
