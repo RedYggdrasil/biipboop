@@ -83,6 +83,7 @@ public abstract class Character : MonoBehaviour
     }
     public virtual void OnActivityFinished(Activity activity)
     {
+        Debug.LogWarning("OnActivityFinished for " + this.gameObject.name + " activity " + ((activity != null) ? activity.gameObject.name:"null"));
         if (_currentActivity == activity)
         {
             _currentActivity = null;

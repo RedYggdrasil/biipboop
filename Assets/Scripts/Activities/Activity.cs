@@ -36,6 +36,7 @@ public abstract class Activity : MonoBehaviour
 
 	public virtual void OnActivityCanceled(Character chara)
 	{
+		Debug.LogWarning("Ask cancel activity for " + chara.gameObject.name + " activity " + this.gameObject.name);
 		if (canCancelActivity)
 		{
 			_canceledCharacter.Add(chara);
