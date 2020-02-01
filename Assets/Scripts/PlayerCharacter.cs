@@ -35,8 +35,4 @@ public class PlayerCharacter : Character
         base.Update();
     }
 
-    public override void OnActivityFinished(Activity activity)
-    {
-
-    }
 }
