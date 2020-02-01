@@ -73,6 +73,10 @@ public abstract class Character : MonoBehaviour
 
     public virtual void SetCurrentActivity(Activity activity)
     {
+        if (_currentActivity == activity)
+        {
+            return;
+        }
         if (_currentActivity != null)
         {
             if (_currentActivity.canCancelActivity)
