@@ -13,8 +13,8 @@ public abstract class Character : MonoBehaviour
     protected ThirdPersonCharacter _character;
     public Transform target; // target to aim for
 
-    public Activity _currentActivity { get; protected set; }
-    public bool activityReached { get; protected set; } = false;
+    public Activity _currentActivity;
+    public bool activityReached = false;
 
 
     protected virtual void Awake()
@@ -40,7 +40,6 @@ public abstract class Character : MonoBehaviour
             {
                 _navMeshAgent.SetDestination(_currentActivity.positionTarget.position);
 
-
                 if (_navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance)
                 {
                     //We continue moving
@@ -55,6 +54,10 @@ public abstract class Character : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            _character.Move(Vector3.zero, false, false);
+        }
     } 
     public void GoToPosition(Vector3 worldPosition)
     {
@@ -64,8 +67,25 @@ public abstract class Character : MonoBehaviour
 
     public virtual void SetCurrentActivity(Activity activity)
     {
+        if (_currentActivity != null)
+        {
+            if (_currentActivity.canCancelActivity)
+            {
+                if (activityReached)
+                {
+                    _currentActivity.OnActivityCanceled(this);
+                }
+            }
+            _currentActivity = null;
+        }
         _currentActivity = activity;
         activityReached = false;
     }
-    public abstract void OnActivityFinished(Activity activity);
+    public virtual void OnActivityFinished(Activity activity)
+    {
+        if (_currentActivity == activity)
+        {
+            _currentActivity = null;
+        }
+    }
 }
