@@ -45,9 +45,10 @@ public abstract class Character : MonoBehaviour
                     //We continue moving
                     _character.Move(_navMeshAgent.desiredVelocity, false, false);
                 }
-                else
+                else if ((this.transform.position - _currentActivity.positionTarget.position).magnitude <= 1f/*_navMeshAgent.stoppingDistance*/)
                 {
                     //We arrived
+                    Debug.Log("here" + _currentActivity.gameObject.name);
                     _character.Move(Vector3.zero, false, false);
                     activityReached = true;
                     _currentActivity.OnReached(this);
@@ -72,6 +73,10 @@ public abstract class Character : MonoBehaviour
 
     public virtual void SetCurrentActivity(Activity activity)
     {
+        if (_currentActivity == activity)
+        {
+            return;
+        }
         if (_currentActivity != null)
         {
             if (_currentActivity.canCancelActivity)
