@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FoeCharacter : Character
 {
@@ -9,7 +10,7 @@ public class FoeCharacter : Character
     public List<Activity> randomPossibleActivities;
     public List<Activity> orderedPossibleActivities;
     [HideInInspector]
-    public List<Transform> visibleTargets;
+    public List<Transform> _visibleTargets { get; private set; }
 
     public override void OnActivityFinished(Activity activity)
     {
@@ -81,5 +82,16 @@ public class FoeCharacter : Character
             }
         }
         SetCurrentActivity(activity);
+    }
+    public void OnUpdateSawTransform(List<Transform> seeingTransform)
+    {
+        _visibleTargets = seeingTransform;
+        foreach (Transform transform in _visibleTargets)
+        {
+            if (transform.tag == "Player")
+            {
+                SceneManager.LoadScene("DevSceneTim2");
+            }
+        }
     }
 }
