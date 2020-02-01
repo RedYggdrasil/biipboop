@@ -28,4 +28,22 @@ public class FoeCharacter : Character
     {
         base.Update();
     }
+    public virtual void OnDetectedHazardousActivity(Activity activity)
+    {
+        if (_currentActivity != null)
+        {
+            if (activityReached)
+            {
+                if (_currentActivity.canCancelActivity)
+                {
+                    _currentActivity.OnActivityCanceled(this);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+        SetCurrentActivity(activity);
+    }
 }
