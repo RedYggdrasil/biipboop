@@ -36,8 +36,9 @@ public class PlayerCharacter : Character
         base.Update();
     }
 
-    public void AddItem()
+    public void AddItem(BotObject botPart)
     {
-        SceneManager.LoadScene("DevSceneTim2");
+        GameManager.instance.OnPickUpObjectObject(botPart);
+        //SceneManager.LoadScene("DevSceneTim2");
     }
 }
