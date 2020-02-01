@@ -20,7 +20,16 @@ public class PlayerCharacter : Character
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000, displacementClickLayer))
             {
-                GoToPosition(hit.point);
+                Debug.Log(hit.transform.gameObject.name);
+                Activity touched = hit.transform.GetComponent<Activity>();
+                if (touched != null && touched.playerInteractibleActivity)
+                {
+                    SetCurrentActivity(touched);
+                }
+                else
+                {
+                    GoToPosition(hit.point);
+                }
             }
         }
         base.Update();
