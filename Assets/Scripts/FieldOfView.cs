@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FoeCharacter))]
 public class FieldOfView : MonoBehaviour
 {
+    [Range(0f,20f)]
     public float viewRad;
     [Range(0,360)]
     public float viewAngle;
@@ -12,13 +14,19 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstacleMask;
     public bool checkingForTargets = true;
 
-    [HideInInspector]
-    public List<Transform> visibleTargets = new List<Transform>();
-
+    [Range(0.1f,10f)]
     public float meshResolution;
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
+    public FoeCharacter foeCharacter;
 
+    void Awake()
+    {
+        if (foeCharacter == null)
+        {
+            foeCharacter = GetComponent<FoeCharacter>();
+        }
+    }
 
     void Start() 
     {
@@ -43,7 +51,7 @@ public class FieldOfView : MonoBehaviour
 
     void FindVisibleTargets() 
     {
-        visibleTargets.Clear();
+        foeCharacter.visibleTargets.Clear();
         Collider[] targetsInViewRad = Physics.OverlapSphere(transform.position, viewRad, targetMask);
         
         for (int i=0; i < targetsInViewRad.Length; i++) 
@@ -52,10 +60,9 @@ public class FieldOfView : MonoBehaviour
             Vector3 dirToTarget = (target.position - transform.position).normalized;
             if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle/2) {
                 float distToTarget = Vector3.Distance(transform.position, target.position);
-                
                 if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
-                    visibleTargets.Add(target);
+                    foeCharacter.visibleTargets.Add(target);
                 }
             }
         }

@@ -8,6 +8,9 @@ public class FoeCharacter : Character
     int _orderedActivityIndex = 0;
     public List<Activity> randomPossibleActivities;
     public List<Activity> orderedPossibleActivities;
+    [HideInInspector]
+    public List<Transform> visibleTargets;
+
     public override void OnActivityFinished(Activity activity)
     {
         base.OnActivityFinished(activity);
@@ -20,6 +23,7 @@ public class FoeCharacter : Character
             SetNextOrderedActivity(activity);
         }
     }
+
     private void SetNextRandomActivity(Activity last)
     {
         if (randomPossibleActivities.Count > 1)
@@ -54,6 +58,7 @@ public class FoeCharacter : Character
     {
         OnActivityFinished(null);
     }
+
     // Update is called once per frame
     protected override void Update()
     {
