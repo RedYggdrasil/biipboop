@@ -26,6 +26,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         Vector3 agentPos = cam.WorldToScreenPoint(targetAgent.position);
+        //Debug.LogWarning(agentPos);
         //if (agentPos.x)
     }
 }
