@@ -36,6 +36,6 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         PrefManager.currScene = "Level";
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(MapNameStatic.GAME_NAME);
     }
 }

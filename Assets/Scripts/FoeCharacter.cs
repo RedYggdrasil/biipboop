@@ -90,7 +90,7 @@ public class FoeCharacter : Character
         {
             if (transform.tag == "Player")
             {
-                SceneManager.LoadScene("DevSceneTim2");
+                SceneManager.LoadScene(MapNameStatic.MENU_NAME);
                 Debug.Log("lost");
             }
         }
