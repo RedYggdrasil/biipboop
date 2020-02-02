@@ -91,6 +91,7 @@ public class FoeCharacter : Character
             if (transform.tag == "Player")
             {
                 SceneManager.LoadScene("DevSceneTim2");
+                Debug.Log("lost");
             }
         }
     }
