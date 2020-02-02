@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: UI music
+  - name: Theme
     clip: {fileID: 8300000, guid: 160b19bda55ce1b44b69104ad811a738, type: 3}
     volume: 0.5
     pitch: 1
