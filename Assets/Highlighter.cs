@@ -10,14 +10,14 @@ public class Highlighter : MonoBehaviour
     public bool highlightActivated = true;
     public bool hasPassiveHighlight;
     public float passiveHighlightPeriod;
+    [SerializeField] Color normalColor = Color.white;
+    [SerializeField] Color highlightColor = Color.grey;
     //public Color passiveHighlightColor;
 
     public float highlightStrength;
 
-    private Color initialMatColor;
     private void Start()
     {
-        initialMatColor = highlightRenderer.material.color;
         if (hasPassiveHighlight)
         {
             activatePassiveHighlight();
@@ -43,27 +43,22 @@ public class Highlighter : MonoBehaviour
     IEnumerator ActiveHighlight(float delay)
     {
         yield return new WaitForSeconds(delay);
-        highlightActivated = true;
-        float t = 0;
-        while (t < HighlightTime & highlightActivated)
+
+
+        float startTime = Time.time;
+        float halfTime = Time.time + HighlightTime * 0.5f;
+        float endTime = Time.time + HighlightTime;
+        while (Time.time < halfTime)
         {
-            yield return new WaitForSeconds(0.05f);
-            t += 0.05f;
-            Color newColor = highlightRenderer.material.color;
-            if (t <= HighlightTime / 2)
-            {
-                newColor.b += highlightStrength;
-                newColor.g += highlightStrength;
-                newColor.r += highlightStrength;
-            } else
-            {
-                newColor.b -= highlightStrength;
-                newColor.g -= highlightStrength;
-                newColor.r -= highlightStrength;
-            }
-            highlightRenderer.material.color = newColor;
+            highlightRenderer.material.color = Color.Lerp(normalColor, highlightColor, (Time.time - startTime) / (HighlightTime * 0.5f));
+            yield return null;
         }
-        highlightRenderer.material.color = initialMatColor;
+        while (Time.time < endTime)
+        {
+            highlightRenderer.material.color = Color.Lerp(highlightColor, normalColor, (Time.time - halfTime) / (HighlightTime * 0.5f));
+            yield return null;
+        }
+        highlightRenderer.material.color = normalColor;
         yield break;
     }
 
