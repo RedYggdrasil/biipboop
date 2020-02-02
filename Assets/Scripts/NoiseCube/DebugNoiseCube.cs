@@ -28,6 +28,16 @@ public class DebugNoiseCube : MonoBehaviour
         {
             _currentActivity = ((canInteractActivity.enabled) ? _currentActivity : noiseActivity);
             _activeRenderer.material = ((canInteractActivity.enabled) ? canInteractMaterial : noiseMaterial);
+
+            if (canInteractActivity.enabled)
+            {
+                AudioManager.instance.Stop("TV music");
+                AudioManager.instance.Play("TV off");
+            }
+            else
+            {
+                AudioManager.instance.Play("TV music");
+            }
         }
     }
 }
