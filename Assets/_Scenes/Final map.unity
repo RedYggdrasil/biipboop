@@ -598,8 +598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveArea: {fileID: 0}
   targetAgent: {fileID: 1551963870}
-  midRectWidth: 0.1
-  midRectHeight: 0.1
+  midRectWidth: 0.15
+  midRectHeight: 0.15
   speed: 5
   zoomSpeed: 50
   zoomRange: 25
@@ -18130,6 +18130,21 @@ PrefabInstance:
       propertyPath: m_MoveSpeedMultiplier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7468921326368466273, guid: f1005f558ce66de4f9c5e24fb15fc88d,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468921326368466273, guid: f1005f558ce66de4f9c5e24fb15fc88d,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468921326368466273, guid: f1005f558ce66de4f9c5e24fb15fc88d,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7468921326373845331, guid: f1005f558ce66de4f9c5e24fb15fc88d,
         type: 3}
       propertyPath: m_Name
@@ -18143,7 +18158,7 @@ PrefabInstance:
     - target: {fileID: 7468921326374038057, guid: f1005f558ce66de4f9c5e24fb15fc88d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 7468921326374038057, guid: f1005f558ce66de4f9c5e24fb15fc88d,
         type: 3}

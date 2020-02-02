@@ -2008,8 +2008,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 7468921326374070763}
   m_AABB:
-    m_Center: {x: 0.0009998977, y: 0.007603839, z: 0.00028842688}
-    m_Extent: {x: 0.80239844, y: 0.23826995, z: 0.5723474}
+    m_Center: {x: -0.056123853, y: 0.007603839, z: -0.013613135}
+    m_Extent: {x: 0.74527466, y: 0.23826995, z: 0.22445154}
   m_DirtyAABB: 0
 --- !u!1 &7468921326373842069
 GameObject:
@@ -2179,7 +2179,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 96
   m_CollisionDetection: 0
 --- !u!136 &7468921326360320811
 CapsuleCollider:
