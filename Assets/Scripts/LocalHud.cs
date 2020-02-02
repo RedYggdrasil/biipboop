@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class LocalHud : MonoBehaviour
 {
-    public GameObject Activity;
     public float progressValue;
     public Image progressBar;
-    public Transform cam;
-
+    public Camera cam;
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
     void Update() 
     {
-        transform.LookAt(cam.position);
+        transform.LookAt(cam.transform.position);
     }
 
-    void UpdateProgress(float newProgress)
+    public void UpdateProgress(float newProgress)
     {
         progressBar.fillAmount = newProgress;
         progressValue = newProgress;
