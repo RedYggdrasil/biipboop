@@ -51,6 +51,7 @@ public class FixedNoiseActivity : Activity
                 foeCharacter.OnDetectedHazardousActivity(this);
             }
         }
+        AudioManager.instance.Play("TV music");
     }
 
 }

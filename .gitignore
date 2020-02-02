@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Materials/New Material.mat
+Assets/Materials/New Material.mat.meta
