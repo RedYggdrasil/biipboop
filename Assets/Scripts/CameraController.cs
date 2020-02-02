@@ -11,6 +11,10 @@ public class CameraController : MonoBehaviour
     [Range(0,1)]
     public float midRectHeight;
     public float speed;
+    [Range(0.1f, 100f)]
+    public float zoomSpeed;
+    [Range(1f, 30f)]
+    public float zoomRange = 5;
 
     private Vector2 camCenter;
 
@@ -19,6 +23,7 @@ public class CameraController : MonoBehaviour
     private Vector2 downLeftCorner;
     private Vector2 upRightCorner;
     private Vector3 offset;
+    private float actualZoom = 0.01f;
 
     void Start() 
     {
@@ -48,6 +53,25 @@ public class CameraController : MonoBehaviour
         if (agentPos.y < downLeftCorner.y || agentPos.y > upRightCorner.y) 
         {
             transform.Translate(dist.x*Time.deltaTime*speed, 0f, 0f,  Space.World);
+        }
+        HandleZoom();
+    }
+
+    void HandleZoom()
+    {
+        Vector3 pos = transform.position;
+        float deltazoom = Input.GetAxis("Mouse ScrollWheel");
+        if (deltazoom != 0 & Mathf.Abs(actualZoom+deltazoom)*zoomSpeed <= zoomRange)
+        {
+            if (deltazoom+actualZoom == 0) { actualZoom += 0.001f; }
+            float rangeDiff = Mathf.Clamp((actualZoom + deltazoom) * zoomSpeed, - zoomRange, zoomRange) / ((actualZoom + deltazoom) * zoomSpeed);
+            if (deltazoom < 0) { rangeDiff *= -1; }
+            pos += transform.forward * Time.deltaTime * zoomSpeed * rangeDiff;
+            offset -= transform.forward * Time.deltaTime * zoomSpeed * rangeDiff;
+            transform.position = pos;
+            actualZoom += deltazoom;
+            if (actualZoom == 0) { actualZoom = 0.001f; }
+            actualZoom = Mathf.Clamp(actualZoom, -zoomRange/zoomSpeed, zoomRange / zoomSpeed);
         }
     }
 }
