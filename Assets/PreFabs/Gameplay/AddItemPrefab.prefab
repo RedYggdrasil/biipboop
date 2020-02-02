@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5189053483924352649}
   - component: {fileID: 5189053483924352648}
   - component: {fileID: 5189053483924352651}
+  - component: {fileID: 5919231416780539432}
   m_Layer: 0
   m_Name: GainItemActivity
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   positionRange: 0
   imobilizeSeconds: 2
   _canceledCharacter: []
+  botPart: 0
 --- !u!135 &5189053483924352651
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -60,6 +62,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0.88, y: 0, z: 0}
+--- !u!114 &5919231416780539432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189053483924352662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a6732a3e66f1144a50043813f899e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightRenderer: {fileID: 5189053485525984804}
+  HighlightTime: 1
+  highlightActivated: 1
+  hasPassiveHighlight: 1
+  passiveHighlightPeriod: 0.5
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  highlightStrength: 0.5
 --- !u!1 &5189053485525984802
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +141,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6779169b486be234f83cec38fe286182, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
