@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenFD : MonoBehaviour
+public class OpenFG : MonoBehaviour
 {
     Animator anim;
     bool open;
@@ -26,7 +26,7 @@ public class OpenFD : MonoBehaviour
                 anim.SetTrigger("Close");
                 open = false;
             }
-            
+
         }
     }
 }
