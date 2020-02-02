@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     private BotObject[] _botObjects;
     [SerializeField] public List<BotParts> _botParts;
+
+    public EndPanel endPanel;
     public static GameManager instance
     {
         get
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            _botObjects[3] = part;
             OnGameWon();
         }
     }
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour
     public void OnGameWon()
     {
         Debug.LogWarning("You won!");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(MapNameStatic.MENU_NAME);
+        endPanel.OnEndPanel(_botObjects);
     }
     public BotObject BotPart(){ return GetBotbodyPart(0); }
     public BotObject HeadPart() { return GetBotbodyPart(1); }
