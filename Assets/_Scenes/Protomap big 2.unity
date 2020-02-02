@@ -385,7 +385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101678617}
   m_LocalRotation: {x: 0.3535534, y: -0.61237246, z: 0.3535534, w: 0.61237246}
-  m_LocalPosition: {x: 15.662, y: 23.147, z: -48}
+  m_LocalPosition: {x: 14.6, y: 20.63, z: -48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -408,6 +408,8 @@ MonoBehaviour:
   midRectWidth: 0.1
   midRectHeight: 0.1
   speed: 2.5
+  zoomSpeed: 50
+  zoomRange: 20
 --- !u!1 &124804632
 GameObject:
   m_ObjectHideFlags: 0
