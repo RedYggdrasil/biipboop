@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             go.SetActive(true);
         }
+        UIInGame.instance.OnEnterStep(index);
     }
     public void OnGameWon()
     {
