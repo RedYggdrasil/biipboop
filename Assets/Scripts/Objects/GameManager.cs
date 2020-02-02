@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
         _botObjects = new BotObject[] { BotObject.EmptyObject, BotObject.EmptyObject, BotObject.EmptyObject, BotObject.EmptyObject };
-        ProgressToNextObject(0);
+        ProgressToNextObject(0, BotObject.EmptyObject);
     }
     public void OnPickUpObjectObject(BotObject part)
     {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         else if (partIndex < 3)
         {
             _botObjects[partIndex] = part;
-            ProgressToNextObject(++partIndex);
+            ProgressToNextObject(++partIndex, part);
 
         }
         else
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
             OnGameWon();
         }
     }
-    public void ProgressToNextObject(int index)
+    public void ProgressToNextObject(int index, BotObject lastpickup)
     {
         Debug.LogWarning("Load Items : " + index);
         if (index > 0)
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         {
             go.SetActive(true);
         }
-        UIInGame.instance.OnEnterStep(index);
+        UIInGame.instance.OnEnterStep(index, lastpickup);
     }
     public void OnGameWon()
     {
