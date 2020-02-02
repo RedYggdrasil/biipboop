@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void OnGameWon()
     {
         Debug.LogWarning("You won!");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(MapNameStatic.MENU_NAME);
     }
     public BotObject BotPart(){ return GetBotbodyPart(0); }
     public BotObject HeadPart() { return GetBotbodyPart(1); }
