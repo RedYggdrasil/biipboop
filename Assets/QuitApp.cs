@@ -6,8 +6,8 @@ public class QuitApp : MonoBehaviour
 {
 	public void QuitAppFunction()
 	{
-#if UNITY_ENGINE
-
+#if UNITY_EDITOR         
+		UnityEditor.EditorApplication.isPlaying = false;
 #else
 		Application.Quit();
 #endif
