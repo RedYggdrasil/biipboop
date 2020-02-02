@@ -11,16 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Final map.unity
     guid: 354c676a57cd93b40ad886947453d0d9
-  - enabled: 1
-    path: Assets/_Scenes/Protomap big.unity
-    guid: 54e59c63a8c40ea439f1c21514d2ce3b
-  - enabled: 1
-    path: Assets/_Scenes/Protomap big 2.unity
-    guid: 7f3e0f9cd9c038949b51190012edd90f
-  - enabled: 1
-    path: Assets/_Scenes/DevSceneQuentin.unity
-    guid: f4aaa1e2595dc1c4ba9ecc066d6083a5
-  - enabled: 1
-    path: Assets/_Scenes/DevSceneTim.unity
-    guid: 039611ded83c60a4c8056ed59492da07
   m_configObjects: {}
